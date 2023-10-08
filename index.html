@@ -6,10 +6,13 @@
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+
     <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    
     <style>
         body {
             color: #404040;
@@ -66,7 +69,7 @@
 
         .heading {
             background: #fff;
-            background-color: #F1823B;
+            background-color: #fff;
             border-bottom: 1px solid #eee;
             height: 70px;
             text-align: center;
@@ -192,7 +195,7 @@
 <body>
     <div class='sidebar'>
         <div class='heading'>
-            <h1> Grassroots Action Teams</h1>
+            <h1> test2 </h1>
         </div>
         <div id='listings' class='listings'></div>
     </div>
@@ -211,11 +214,10 @@
         };
         //YOUR TURN: add your Mapbox token 
         mapboxgl.accessToken = 'pk.eyJ1IjoianVsaWFzb2JjemFrIiwiYSI6ImNrY2RtOXpkZDAwenUycG54eXlsYTFmcXkifQ.3hLkp5zWDu7IvZG_zsaKJQ'; //Mapbox token 
-        var map = new mapboxgl.Map({
+        const map = new mapboxgl.Map({
             container: 'map', // container id
             style: 'mapbox://styles/juliasobczak/clm9b0lh4012n01rfczok9iiv', //stylesheet location
-            center: [-99.140625,
-                39.90973623453719], // starting position
+            center: [-79.2979, 25.7273], // starting position
             zoom: 4,// starting zoom
             transformRequest: transformRequest
         });
@@ -224,7 +226,7 @@
             $.ajax({
                 type: "GET",
                 //YOUR TURN: Replace with csv export link
-                url: 'https://docs.google.com/spreadsheets/d/1wJtHsBoDY2DMr-rX0jqQzZlSOvj1a55xH8aCksW04Ig/gviz/tq?tqx=out:csv&sheet=Sheet1',
+                url: 'https://docs.google.com/spreadsheets/d/15lfEADW8jcqeCQ6UMMK9ZmelxDqdEUi6mdOVpFcq3LI/gviz/tq?tqx=out:csv&sheet=Sheet1',
                 dataType: "text",
                 success: function (csvData) { makeGeoJSON(csvData); }
             });
@@ -239,7 +241,7 @@
                 }, function (err, data) {
                     map.on('load', function () {
                         map.loadImage(
-                            '/paws_white.png',
+                            '/x.png',
                             function (error, image) {
                                 if (error) throw error;
                                 map.addImage('paws', image);
