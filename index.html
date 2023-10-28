@@ -13,14 +13,14 @@
     
     <style>
         body {
-            color: #404040;
-            font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+            /* color: #404040; */
+            /* font: 400 15px/22px 'Garamond', 'Baskerville'; */
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
+            /* -webkit-font-smoothing: antialiased; */
         }
 
-        * {
+        /* * {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -37,11 +37,11 @@
         a {
             color: #ffffff;
             text-decoration: none;
-        }
+        } */
 
-        a:hover {
+        /* a:hover {
             color: #101010;
-        }
+        } */
 
         /* .sidebar {
             position: absolute;
@@ -59,13 +59,12 @@
 
         #map {
             position: absolute;
-            left:0%;
             width: 100%;
             top: 0;
             bottom: 0;
         }
 
-        .heading {
+        /* .heading {
             background: #fff;
             background-color: #fff;
             border-bottom: 1px solid #eee;
@@ -73,73 +72,17 @@
             text-align: center;
             line-height: 670px;
             padding: 0 10px;
-        }
-
-        /* .listings {
-            height: 100%;
-            overflow: auto;
-            padding-bottom: 60px;
-        }
-
-        .listings .item {
-            display: block;
-            border-bottom: 1px solid #eee;
-            padding: 10px;
-            text-decoration: none;
         } */
 
-        /* .listings .item:last-child {
-            border-bottom: none;
-        }
-
-        .listings .item .title {
-            display: block;
-            color: #F1823B;
-            font-weight: 700;
-        } */
-
-        /* .listings .item .title small {
-            font-weight: 400;
-        }
-
-        .listings .item.active .title,
-        .listings .item .title:hover {
-            color: #3d3d3f;
-        }
-
-        .listings .item.active {
-            background-color: #ededed;
-        }
-
-        ::-webkit-scrollbar {
-            width: 3px;
-            height: 3px;
-            border-left: 0;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        ::-webkit-scrollbar-track {
-            background: none;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #F1823B;
-            border-radius: 0;
-        } */
-
-        /* .clearfix {
-            display: block;
-        }
-
-        .clearfix::after {
+        /* .clearfix::after {
             content: '.';
             display: block;
             height: 0;
             clear: both;
             visibility: hidden;
-        } */
+        } */ */
 
-        /* Marker tweaks */
+        /* Popup styling */
         .mapboxgl-popup {
             padding-bottom: 5px;
         }
@@ -149,7 +92,7 @@
         }
 
         .mapboxgl-popup-content {
-            font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+            font: 400 15px/22px 'Garamond', 'Baskerville';
             padding: 0;
             width: 250px;
         }
@@ -159,20 +102,21 @@
         }
 
         .mapboxgl-popup-content h3 {
-            background: #F1823B;
-            color: #3d3d3f;
+            background: #3d4a57;
+            text-align: center;
+            color: #fff;
             margin: 0;
             display: block;
-            padding: 10px;
-            border-radius: 3px 3px 0 0;
-            font-weight: 400;
-            margin-top: -15px;
+            padding: 15px;
+            /* border-radius: 3px 3px 0 0; */
+            font-weight: 700;
+            margin-top: -5px;
         }
 
         .mapboxgl-popup-content h4 {
             margin: 0;
             display: block;
-            padding: 10px;
+            padding: 10px 3px 10px 10px;
             font-weight: 400;
         }
 
@@ -189,18 +133,13 @@
         }
 
         .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
-            border-bottom-color: #F1823B;
+            border-bottom-color: #3d4a57;
         }
     </style>
 </head>
 
 <body>
-    <!-- <div class='sidebar'>
-        <div class='heading'>
-            <h1> test2 </h1>
-        </div>
-        <div id='listings' class='listings'></div>
-    </div> -->
+
     <div id='map' class='map'></div>
     <script>
 
@@ -214,8 +153,9 @@
                     : url
             };
         };
+
         //YOUR TURN: add your Mapbox token 
-        mapboxgl.accessToken = 'pk.eyJ1IjoianVsaWFzb2JjemFrIiwiYSI6ImNrY2RtOXpkZDAwenUycG54eXlsYTFmcXkifQ.3hLkp5zWDu7IvZG_zsaKJQ'; //Mapbox token 
+        mapboxgl.accessToken = 'pk.eyJ1IjoianVsaWFzb2JjemFrIiwiYSI6ImNrY2RtOXpkZDAwenUycG54eXlsYTFmcXkifQ.3hLkp5zWDu7IvZG_zsaKJQ'; 
         var map = new mapboxgl.Map({
             container: 'map', // container id
             style: 'mapbox://styles/juliasobczak/clm9b0lh4012n01rfczok9iiv', //stylesheet location
@@ -224,154 +164,6 @@
             transformRequest: transformRequest
         });
         
-        // $(document).ready(function () {
-        //     $.ajax({
-        //         type: "GET",
-        //         //YOUR TURN: Replace with csv export link
-        //         url: 'https://docs.google.com/spreadsheets/d/https://docs.google.com/spreadsheets/d/15lfEADW8jcqeCQ6UMMK9ZmelxDqdEUi6mdOVpFcq3LI/gviz/tq?tqx=out:csv&sheet=Sheet1',
-        //         dataType: "text",
-        //         success: function (csvData) { makeGeoJSON(csvData); }
-        //     });
-
-
-            // function makeGeoJSON(csvData) {
-            //     csv2geojson.csv2geojson(csvData, {
-            //         latfield: 'Latitude',
-            //         lonfield: 'Longitude',
-            //         delimiter: ','
-            //     }, function (err, data) {
-            //         map.on('load', function () {
-            //             map.loadImage(
-            //                 '/x.png',
-            //                 function (error, image) {
-            //                     if (error) throw error;
-            //                     map.addImage('x', image);
-            //                 });
-
-            //             //Add the the layer to the map 
-            //             map.addLayer({
-            //                 'id': 'csvData',
-            //                 'type': 'symbol',
-            //                 'source': {
-            //                     'type': 'geojson',
-            //                     'data': data
-            //                 },
-            //                 'layout': {
-            //                     'icon-image': 'x',
-            //                     'icon-size': 1
-            //                 }
-            //             });
-
-
-            //             // buildLocationList(data);
-
-
-            //             // function flyToLocation(currentFeature) {
-            //             //     map.flyTo({
-            //             //         center: currentFeature,
-            //             //         zoom: 8
-            //             //     });
-            //             // }
-
-            //             function createPopup(currentFeature) {
-            //                 const popups = document.getElementsByClassName("mapboxgl-popup");
-            //                 /** Check if there is already a popup on the map and if so, remove it */
-            //                 if (popups[0]) popups[0].remove();
-            //                 const popup = new mapboxgl.Popup({ closeOnClick: true })
-            //                     .setLngLat(currentFeature.geometry.coordinates)
-            //                     .setHTML("<h3>" + currentFeature.properties.Name + "</h3>")
-            //                     .addTo(map);
-            //             }
-
-            //             map.on('click', 'csvData', function (e) {
-            //                 // console.log(e.features[0].geometry)
-            //                 createPopup(e.features[0])
-            //             });
-
-            //             /**
-            //              * Add a listing for each store to the sidebar.
-            //             **/
-            //             // function buildLocationList(data) {
-            //             //     data.features.forEach(function (location, i) {
-            //             //         /**
-            //             //          * Create a shortcut for `store.properties`,
-            //             //          * which will be used several times below.
-            //             //         **/
-            //             //         var prop = location.properties;
-
-            //             //         /* Add a new listing section to the sidebar. */
-            //             //         var listings = document.getElementById('listings');
-            //             //         var listing = listings.appendChild(document.createElement('div'));
-            //             //         /* Assign a unique `id` to the listing. */
-            //             //         listing.id = "listing-" + prop.id;
-            //             //         /* Assign the `item` class to each listing for styling. */
-            //             //         listing.className = 'item';
-
-            //             //         /* Add the link to the individual listing created above. */
-            //             //         var link = listing.appendChild(document.createElement('a'));
-            //             //         link.href = '#';
-            //             //         link.className = 'title';
-            //             //         link.id = "link-" + prop.Notes;
-            //             //         link.innerHTML = prop.City;
-
-            //             //         /* Add details to the individual listing. */
-            //             //         var details = listing.appendChild(document.createElement('div'));
-            //             //         details.innerHTML = prop.Name;
-            //             //         if (prop.FacebookGroup) {
-            //             //             details.innerHTML += ' Facebook: ' + prop.FacebookGroup;
-            //             //         }
-
-
-            //             //         link.addEventListener('click', function (e) {
-            //             //             for (var i = 0; i < data.features.length; i++) {
-            //             //                 if (this.id === "link-" + data.features[i].properties.id) {
-            //             //                     var clickedListing = data.features[i];
-            //             //                     flyToLocation(clickedListing);
-            //             //                     createPopUp(clickedListing);
-            //             //                 }
-            //             //             }
-            //             //             var activeItem = document.getElementsByClassName('active');
-            //             //             if (activeItem[0]) {
-            //             //                 activeItem[0].classList.remove('active');
-            //             //             }
-            //             //             this.parentNode.classList.add('active');
-            //             //         });
-
-            //             //         link.addEventListener('click', function (e) {
-            //             //             const clickedListing = location.geometry.coordinates;
-            //             //             flyToLocation(clickedListing, 8);
-            //             //             createPopup(location);;
-
-            //             //             var activeItem = document.getElementsByClassName('active');
-            //             //             if (activeItem[0]) {
-            //             //                 activeItem[0].classList.remove('active');
-            //             //             }
-            //             //             this.parentNode.classList.add('active');
-            //             //         });
-            //             //     });
-            //             // }
-
-
-
-
-            //             // function createPopUp(currentFeature) {
-            //             //     var popUps = document.getElementsByClassName('mapboxgl-popup');
-            //             //     /** Check if there is already a popup on the map and if so, remove it */
-            //             //     if (popUps[0]) popUps[0].remove();
-
-            //             //     var popup = new mapboxgl.Popup({ closeOnClick: false })
-            //             //         .setLngLat(currentFeature.geometry.coordinates)
-            //             //         .setHTML('<h3>Sweetgreen</h3>' +
-            //             //             '<h4>' + currentFeature.properties.address + '</h4>')
-            //             //         .addTo(map);
-            //             // }
-
-
-            //         });
-
-            //     });
-            // };
-        // });
 
         //New Stuff
         $(document).ready(function () {
@@ -387,78 +179,82 @@
 
             function makeGeoJSON(csvData) {
                 csv2geojson.csv2geojson(csvData, {
-                latfield: 'Latitude',
-                lonfield: 'Longitude',
-                delimiter: ','
+                    latfield: 'Latitude',
+                    lonfield: 'Longitude',
+                    delimiter: ','
                 }, function (err, data) {
-                map.on('load', function () {
-                    map.loadImage(
-                        '/x.png',
-                        function (error, image){
-                            if (error) throw error;
-                            map.addImage('x', image);
-                        }
-                    );
+                    map.on('load', function () {
+                        // map.loadImage(
+                        // '/x.png',
+                        // function (error, image){
+                        //     if (error) throw error;
+                        //     map.addImage('x', image);
+                        // }
+                    // );
 
-                //Add the the layer to the map
-                map.addLayer({
-                    'id': 'csvData',
-                    'type': symbol,
-                    'source': {
-                    'type': 'geojson',
-                    'data': data
-                    },
-                    'layout': {
-                    'icon-image': 'x',
-                    'icon-size': 8
-                    }
+                        //Add the the layer to the map - change type to symbol
+                        map.addLayer({
+                            'id': 'csvData',
+                            'type': circle,
+                            'source': {
+                                'type': 'geojson',
+                                'data': data
+                            },
+                            'paint': {
+                                'circle-radius': 8,
+                                'circle-color': "purple"
+                            }
+                            // 'layout': {
+                            // 'icon-image': 'x',
+                            // 'icon-size': 8
+                            // }
+                        });
+
+
+
+                        // When a click event occurs on a feature in the csvData layer, open a popup at the
+                    // location of the feature, with description HTML from its properties.
+                        map.on('click', 'csvData', function (e) {
+                            var coordinates = e.features[0].geometry.coordinates.slice();
+
+                            //set popup text
+                            //You can adjust the values of the popup to match the headers of your CSV.
+                            // For example: e.features[0].properties.Name is retrieving information from the field Name in the original CSV.
+                            var description = `<h3>` + e.features[0].properties.Name + `</h3>` + `<h4>` + `<b>` + `Link: ` + `</b>` + e.features[0].properties.Link + `</h4>`;
+
+                            // Ensure that if the map is zoomed out such that multiple
+                            // copies of the feature are visible, the popup appears
+                            // over the copy being pointed to.
+                            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                            }
+
+                            //add Popup to map
+
+                            new mapboxgl.Popup()
+                            .setLngLat(coordinates)
+                            .setHTML(description)
+                            .addTo(map);
+                        });
+
+                        // Change the cursor to a pointer when the mouse is over the places layer.
+                        map.on('mouseenter', 'csvData', function () {
+                            map.getCanvas().style.cursor = 'pointer';
+                        });
+
+                        // Change it back to a pointer when it leaves.
+                        map.on('mouseleave', 'places', function () {
+                            map.getCanvas().style.cursor = '';
+                        });
+
+                        var bbox = turf.bbox(data);
+                        map.fitBounds(bbox, { padding: 50 });
+
+                    });
+
                 });
-
-
-
-            // When a click event occurs on a feature in the csvData layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
-            map.on('click', 'csvData', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-
-              //set popup text
-              //You can adjust the values of the popup to match the headers of your CSV.
-              // For example: e.features[0].properties.Name is retrieving information from the field Name in the original CSV.
-              var description = `<h3>` + e.features[0].properties.Name + `</h3>` + `<h4>` + `<b>` + `Link: ` + `</b>` + e.features[0].properties.Link + `</h4>` + `<h4>` + `<b>` + `Test: ` + `</b>` + e.features[0].properties.Phone + `</h4>`;
-
-              // Ensure that if the map is zoomed out such that multiple
-              // copies of the feature are visible, the popup appears
-              // over the copy being pointed to.
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-
-              //add Popup to map
-
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
-
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on('mouseenter', 'csvData', function () {
-              map.getCanvas().style.cursor = 'pointer';
-            });
-
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'places', function () {
-              map.getCanvas().style.cursor = '';
-            });
-
-            var bbox = turf.bbox(data);
-            map.fitBounds(bbox, { padding: 50 });
-
-          });
-
+            };
         });
-      };
-    });
 
 
 
